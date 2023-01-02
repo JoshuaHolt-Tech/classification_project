@@ -17,6 +17,7 @@ def prep_telco(working_df):
     #The assumption is these are new accounts where payment has not been made yet.
     working_df['total_charges'] = working_df['total_charges'].replace(' ', 0).astype('float')
     working_df['churn'] = working_df.churn_month.isna().astype('int')
+    working_df['tenure'] = round(working_df.total_charges / working_df.monthly_charges)
     #Changes string yes/no to int 0/1 for use in machine learning algorithm:
     encode_list = ['paperless_billing', 'partner' , 'dependents']
     for col in working_df.columns:
@@ -36,8 +37,8 @@ def prep_telco(working_df):
     return working_df
 
 
-# 20% test, 80% train_validate
-# then of the 80% train_validate: 30% validate, 70% train. 
+# 30% test, 70% train_validate
+# then of the 70% train_validate: 50% validate, 50% train. 
 def train_validate(df, stratify_col = None, random_seed=1969):
     """
     This function takes in a DataFrame and column name for the stratify argument (defualt is None).

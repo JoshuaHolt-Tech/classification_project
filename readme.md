@@ -16,7 +16,8 @@ Project Planning (lay out your process through the data science pipeline)
 	1.	Aquire data from the Codeup SQL database.
 	2.	Prepare data
 		⁃	Create calculated columns from existing data:
-		⁃	Tenure
+            ⁃ tenure
+            - churn
 	3.	Explore data in search of drivers.
 		⁃	Answer the following initial questions:
 			⁃	Does higher monthly costs contribute to more customer churn?
@@ -31,11 +32,15 @@ Project Planning (lay out your process through the data science pipeline)
 
 Data Dictionary:
 Feature					Definition
-churn
+churn                   1 or 0 for if the customer has churned or not.
+tenure                  Time in months that services have been rendered. Calucated by total_charges/monthly_charges and rounded to a whole number.
 
 
 Steps to Reproduce:
 
 Takeaways and Conclusions:
+
+- The customers table appears to be created from the other existing tables. The customers.tenure column data integrity is suspicious when compared to a calculation of total_charges/monthly_charges. For this reason I did not use the customers table.
+- It appears the data was retrieved on 2022-01-31.
 
 Recommendations:
