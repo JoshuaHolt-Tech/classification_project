@@ -16,7 +16,7 @@ def prep_telco(working_df):
     #Total_charges has null entries and they are replaced with 0.
     #The assumption is these are new accounts where payment has not been made yet.
     working_df['total_charges'] = working_df['total_charges'].replace(' ', 0).astype('float')
-    working_df['churn'] = working_df.churn_month.isna().astype('int')
+    working_df['churn'] = working_df.churn_month.notna().astype('int')
     working_df['tenure'] = round(working_df.total_charges / working_df.monthly_charges)
     #Changes string yes/no to int 0/1 for use in machine learning algorithm:
     encode_list = ['paperless_billing', 'partner' , 'dependents']
@@ -25,7 +25,7 @@ def prep_telco(working_df):
             working_df[col] = working_df[col].replace({'Yes':True,'No':False}).astype('int')
      
     #Adds dummy columns for columns that have multiple categories.
-    dummy_df = (pd.get_dummies(working_df[['gender', 'streaming_movies', 'streaming_tv' , 'tech_support', 'multiple_lines', 'online_backup', 'online_security', 'device_protection', 'payment_type', 'internet_service_type', 'contract_type']], drop_first=True))
+    dummy_df = (pd.get_dummies(working_df[['gender', 'streaming_movies', 'streaming_tv' , 'tech_support', 'multiple_lines', 'online_backup', 'online_security', 'device_protection', 'payment_type', 'internet_service_type', 'contract_type']]))
     
     #Removes columns which provide little information or are duplicate:
     #Do something with 'signup_date'
