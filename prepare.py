@@ -37,8 +37,8 @@ def prep_telco(working_df):
     return working_df
 
 
-# 30% test, 70% train_validate
-# then of the 70% train_validate: 50% validate, 50% train. 
+# 20% test, 80% train_validate
+# then of the 70% train_validate: 30% validate, 70% train. 
 def train_validate(df, stratify_col = None, random_seed=1969):
     """
     This function takes in a DataFrame and column name for the stratify argument (defualt is None).
@@ -52,12 +52,12 @@ def train_validate(df, stratify_col = None, random_seed=1969):
         stratify_arg = None
     
     #This splits the DataFrame into 'train' and 'test':
-    train, test = train_test_split(df, train_size=.7, stratify=stratify_arg, random_state = random_seed)
+    train, test = train_test_split(df, train_size=.8, stratify=stratify_arg, random_state = random_seed)
     
     #The length of the stratify column changed and needs to be adjusted:
     if stratify_col != None:
         stratify_arg = train[stratify_col]
         
     #This splits the larger 'train' DataFrame into a smaller 'train' and 'validate' DataFrames:
-    train, validate = train_test_split(train, test_size=.5, stratify=stratify_arg, random_state = random_seed)
+    train, validate = train_test_split(train, test_size=.3, stratify=stratify_arg, random_state = random_seed)
     return train, validate, test
