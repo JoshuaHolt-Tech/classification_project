@@ -32,15 +32,31 @@ Telco has elevated levels of customers canceling their services or churning. It 
 
 # Data Dictionary:
 
+
 | Feature |	Definition |
-| paperless_billing | Indicates 1 if the customer subscribe to paperless_billing. |
-| senior_citizen | Indicates 1 if the customer is described as a senior citizen. Cutoff age is unknown. |
-| partner | Indicates 1 if the customer has a spouse. |
-| dependents | Indicates 1 if the customer is relied upon by another human for financial support. |
-| monthly_charges | Total charges on a monthly basis for all the services a customer is subscribed to.|
-| total_charges | This is a sum of all the monthly charges a customer has paid during their tenure.|
-| churn | Indicates 1 if the customer has cancelled all their subscriptions with Telco. |
-| tenure | The amount of time in months that a customer has been subscribed for services. |
+|:--------|:-----------|
+|phone_service| Indicates if a customer is subscribed for phone service |
+|multiple_lines| If a customer subscribed for phone service has multiple lines.|
+|online_security| If a customer is subscribed for online security service |
+|online_backup|  If a customer is subscribed for online backup service |
+|device_protection|  If a customer is subscribed for device protection service |
+|tech_support|  If a customer is subscribed for technical support service |
+|streaming_tv|  If a customer is subscribed for streaming TV service |
+|streaming_movies|  If a customer is subscribed for streaming movie service |
+|churn_month|  If a customer has churned, this is the month they cancelled their service |
+|paperless_billing| Indicates 1 if the customer subscribe to paperless_billing. |
+|gender| The customer's biological sex |
+|senior_citizen| Indicates 1 if the customer is described as a senior citizen. Cutoff age is unknown. |
+|partner| Indicates 1 if the customer has a spouse. |
+|dependents| Indicates 1 if the customer is relied upon by another human for financial support. |
+|monthly_charges| Total charges on a monthly basis for all the services a customer is subscribed to.|
+|total_charges| This is a sum of all the monthly charges a customer has paid during their tenure.|
+|signup_date| The date on which the customer first signed up for services. |
+|contract_type| Month-to-month, yearly and two-year contracts|
+|internet_service_type| None, DSL and fiber optic |
+|payment_type| Mailed check, electronic check, bank transfer and credit card. |
+|churn (target)| Indicates 1 if the customer has cancelled all their subscriptions with Telco. |
+|tenure| The number of months that a customer has been subscribed for services. |
 
 
 # Steps to Reproduce:
