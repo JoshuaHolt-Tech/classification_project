@@ -29,7 +29,7 @@ def prep_telco(working_df):
     
     #Removes columns which provide little information or are duplicate:
     #Do something with 'signup_date'
-    cols_to_drop = ['churn_month', 'signup_date', 'gender', 'phone_service', 'multiple_lines', 'online_security', 'online_backup', 'device_protection', 'tech_support', 'streaming_tv', 'streaming_movies', 'contract_type', 'payment_type', 'payment_type_id', 'internet_service_type_id', 'contract_type_id', 'customer_id', 'internet_service_type']    
+    cols_to_drop = ['churn_month', 'signup_date', 'gender', 'phone_service', 'multiple_lines', 'online_security', 'online_backup', 'device_protection', 'tech_support', 'streaming_tv', 'streaming_movies', 'contract_type', 'payment_type', 'payment_type_id', 'internet_service_type_id', 'contract_type_id', 'internet_service_type']    
     working_df.drop(columns=cols_to_drop, inplace = True)
     #Adds the two DataFrames back together for output:
     working_df = pd.concat([working_df, dummy_df], axis=1)

@@ -37,7 +37,7 @@ def ind_of_churn(train):
     no_churn = train[train.churn == 0]
 
     #Removing target and non categorical columns
-    cols_to_drop = ['churn', 'monthly_charges', 'total_charges', 'tenure']
+    cols_to_drop = ['churn', 'monthly_charges', 'total_charges', 'tenure', 'customer_id']
 
     churn_df.drop(columns=cols_to_drop, inplace = True)
     no_churn.drop(columns=cols_to_drop, inplace = True)
@@ -126,7 +126,7 @@ def q_4_viz(train):
 
 def get_chi_m2m(train):
     """
-    Does a chi^2 test on a churn and month-to-month contract customers.
+    Does a chi^2 test on churn and month-to-month contract customers.
     """
     
     # Let's run a chi squared to compare proportions, to have more confidence
@@ -152,7 +152,7 @@ def get_chi_m2m(train):
     
 def get_chi_fo(train):
     """
-    
+    Runs the chi^2 test on the dataframe column that has internet_service_type_Fiber optic and churn to see if there is a relationship.
     """
     
     # Let's run a chi squared to compare proportions, to have more confidence
@@ -180,7 +180,7 @@ def get_chi_fo(train):
     
 def get_chi_ts(train):
     """
-    
+    Runs the chi^2 test on the dataframe column that has tech_support_No and churn to see if there is a relationship.
     """
     # Let's run a chi squared to compare proportions, to have more confidence
     alpha = 0.05
@@ -206,7 +206,7 @@ def get_chi_ts(train):
 
 def get_chi_ni(train):
     """
-    
+    Runs the chi^2 test on the dataframe column that has internet_service_type_None and churn to see if there is a relationship.
     """
     # Let's run a chi squared to compare proportions, to have more confidence
     alpha = 0.05
@@ -233,24 +233,25 @@ def get_chi_ni(train):
 
 def train_val_test(train, val, test):
     """
-    
+    Seperates out the target variable and creates a series with only the target variable to test accuracy.
     """
     #Seperating out the target variable
-    X_train = train.drop(columns=['churn'])
+    X_train = train.drop(columns=['churn', 'customer_id'])
     y_train = train.churn
 
-    X_val = val.drop(columns = ['churn'])
+    X_val = val.drop(columns = ['churn', 'customer_id'])
     y_val = val.churn
 
-    X_test = test.drop(columns = ['churn'])
+    X_test = test.drop(columns = ['churn', 'customer_id'])
     y_test = test.churn
+    id_test = test.customer_id
     return X_train, y_train, X_val, y_val, X_test, y_test
 
 
 
 def dec_tree(X_train, y_train, X_val, y_val):
     """
-    
+    This function runs the Decission Tree classifier on the training and validation test sets.
     """
     #Create the model
     clf = DecisionTreeClassifier(max_depth=3, random_state=1969)
@@ -264,7 +265,7 @@ def dec_tree(X_train, y_train, X_val, y_val):
     
 def rand_forest(X_train, y_train, X_val, y_val):
     """
-    
+    This function runs the Random Forest classifier on the training and validation test sets.
     """
     #Creating the random forest object
     rf = RandomForestClassifier(bootstrap=True,
@@ -285,7 +286,7 @@ def rand_forest(X_train, y_train, X_val, y_val):
 
 def knn_mod(X_train, y_train, X_val, y_val):
     """
-    
+    This function runs the KNN classifier on the training and validation test sets.
     """
     #Creating the model
     knn = KNeighborsClassifier(n_neighbors=10, weights='uniform')
@@ -299,7 +300,7 @@ def knn_mod(X_train, y_train, X_val, y_val):
 
 def lr_mod(X_train, y_train, X_val, y_val):
     """
-    
+    This function runs the Logistic Regression classifier on the training and validation test sets.
     """
     #Creating a logistic regression model
     logit = LogisticRegression(random_state=1969)
@@ -313,7 +314,7 @@ def lr_mod(X_train, y_train, X_val, y_val):
     
 def final_test(X_train, y_train, X_test, y_test):
     """
-    
+    This function runs the Logistic Regression classifier on the final test set.
     """
     #Creating a logistic regression model
     logit = LogisticRegression(random_state=1969)

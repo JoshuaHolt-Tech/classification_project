@@ -62,23 +62,35 @@ Telco has elevated levels of customers canceling their services or churning. It 
 # Steps to Reproduce:
 1. Copy this repo.
 2. Get credentials from Codeup to query their telco_churn dataset.
-3. Run the notebook.
+3. Ensure the acquire.py, prepare.py, env.py and telco_functions.py are in the same folder as the final notebook.
+3. Run the final notebook.
 
 # Takeaways:
 
 - The customers table appears to be created from the other existing tables. The data in the customers.tenure column is suspicious when compared to a calculation of total_charges/monthly_charges. For this reason I did not use the customers table and created a new tenure column by dividing total_charges by monthly_charges.
-- It appears the data was retrieved on 2022-01-31.
-- Creating DataFrame of just churned customers and another of not churned customers was very useful. Comparing it to the baseline indicated which categorical features might be drivers of churn. I focused on the top four.
+- It appears the data was retrieved on 2022-01-31. This is also the date for all churn customers.
+- Creating DataFrame of just churned customers and another of not churned customers was very useful. It shows the rate at which each feature occured in both groups. I focused on the top and bottom four.
 
 # Conclusions:
 
 Churn occurs at 26.5% in the Telco dataset. The drivers of churn are: 
-- having a month-to-month contract 
-- having fiber optic internet 
-- low tenure/being a new customer
+- Having a month-to-month contract
+- Not having tech support
+- Not having online security
+- Having fiber optic internet
+- Low tenure/being a new customer
+- Higher monthly charges
 
-# Recommendations:
+# Recommendations
 
+- Evaluate pricing and quality of fiber optic internet service.
+- Evaluate pricing and impact of tech support and online security.
 - Incentivize Month-to-month and fiber optic customers to stay.
 - Consider lowering prices for newer customers.
-- Once churn decreases, evaluate pricing power on phone services and possibly raise rates.
+- Once churn decreases, evaluate pricing power on phone services and two year contracts.
+
+# Next Steps
+- Do statistical testing on the monthly_charges and total_charges features
+- Create a way to automatically compare churn for continuous features
+- Dig in deeper on features which have greater than 10% indication of churn.
+- Evaluate fiber optic internet type to identify focus areas.
