@@ -1,7 +1,7 @@
 env.py
 .Rproj
 .Rproj.user
-*.csv
+telco_churn.csv
 .DS_Store
 .ipynb_checkpoints/
 __pycache__
