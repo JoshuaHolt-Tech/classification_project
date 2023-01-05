@@ -15,9 +15,9 @@ Telco has elevated levels of customers canceling their services or churning. It 
 # Project Planning (lay out your process through the data science pipeline)
 	1.	Aquire data from the Codeup SQL database.
 	2.	Prepare data
-		⁃	Create calculated columns from existing data:
-            ⁃ tenure
-            - churn
+		⁃ Create calculated columns from existing data:
+            		⁃ tenure
+            		- churn
 	3.	Explore data in search of drivers.
 		⁃	Answer the following initial questions:
 			⁃	Does higher monthly costs contribute to more customer churn?
