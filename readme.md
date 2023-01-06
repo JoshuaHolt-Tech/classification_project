@@ -16,8 +16,8 @@ Telco has elevated levels of customers canceling their services or churning. It 
 	1.	Aquire data from the Codeup SQL database.
 	2.	Prepare data
 		⁃ Create calculated columns from existing data:
-            		⁃ tenure
-            		- churn
+            ⁃ tenure
+            - churn
 	3.	Explore data in search of drivers.
 		⁃	Answer the following initial questions:
 			⁃	Does higher monthly costs contribute to more customer churn?
@@ -73,7 +73,7 @@ Telco has elevated levels of customers canceling their services or churning. It 
 
 # Conclusions:
 
-Churn occurs at 26.5% in the Telco dataset. The drivers of churn are: 
+Churn occurs at 27% in the Telco dataset. The drivers of churn are: 
 - Having a month-to-month contract
 - Not having tech support
 - Not having online security

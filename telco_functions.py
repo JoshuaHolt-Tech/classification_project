@@ -52,14 +52,31 @@ def ind_of_churn(train):
         output = {"Column" : item,
                   "Churn %": churn,    
                   "Not Churn %": no_c,
-                  "Churn Indication %":(churn - no_c) }
+                  "Churn Indication":(churn - no_c) }
 
         distros.append(output)
     dis_df = pd.DataFrame(distros)              
     dis_df = dis_df.set_index('Column')
-    churn_ind = dis_df.sort_values("Churn Indication %", ascending=False).head(4)
-    anti_churn = dis_df.sort_values("Churn Indication %", ascending=True).head(4)
-    return churn_ind, anti_churn
+    churn_ind = dis_df.sort_values("Churn Indication", ascending=False).head(4)
+    anti_churn = dis_df.sort_values("Churn Indication", ascending=True).head(4)
+    return churn_ind, anti_churn, dis_df
+
+def viz_ind_churn(dis_df):
+    """
+    This function plots a list of features and their contribution to churn.
+    """
+    my_range=range(1,len(dis_df.index) + 1)
+    # Builds the chart
+    plt.figure(figsize=(4,10))
+    plt.scatter(dis_df['Churn Indication'], my_range, color='green', alpha=0.8 , label='Churn Indication')
+    plt.axvline(0, c='tomato')
+    plt.legend()
+
+    # Add title and axis names
+    plt.yticks(my_range, dis_df.index)
+    plt.title("Drivers of Churn", loc='center')
+    plt.xlabel('Anti-Churn= -100      Occures Evenly = 0      Churn= 100')
+    plt.ylabel('Feature')
 
 def charges_chart(train):
     """
@@ -185,7 +202,7 @@ def get_chi_ts(train):
     # Let's run a chi squared to compare proportions, to have more confidence
     alpha = 0.05
     null_hypothesis = "customers who don't have tech support and that churn are independent."
-    alternative_hypothesis = "there is a relationship between customers that without tech support and that churn."
+    alternative_hypothesis = "there is a relationship between customers who don't have tech support and that churn."
 
     # Setup a crosstab of observed churn to payment_type_Electronic check
     observed = pd.crosstab(train.churn, train['tech_support_No'])
