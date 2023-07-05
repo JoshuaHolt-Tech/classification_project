@@ -1,37 +1,22 @@
-# Project Description:
+# 📞 Project Overview: Unraveling the Mystery of Customer Churn at Telco 📊
 
-Telco has elevated levels of customers canceling their services or churning. It has tasked us with identifying the drivers of customer churn and producing recommendations on how to reduce it. 
+Telco has elevated levels of customers canceling their services or churning. I am tasked with identifying the drivers of customer churn and producing recommendations on how to reduce it. 
 
-# Goals:
-	•	Find drivers for customer churn at Telco.
-	•	Construct a ML classification model that accurately predicts customer churn.
-	•	Deliver a report that a non-data scientist can read through and understand what steps were taken, why and what was the outcome?
-	•	Develop recommendations to reduce churn.
+**🚀 The Challenge**: Telco, a leading telecommunications company, is grappling with an increasing rate of customer churn. They've turned to me to unravel the mystery behind this trend and devise strategies to curb it. 
 
-# Initial Thoughts:
-	⁃	My initial hypothesis is that churn will be related to higher monthly costs. 
-	⁃	The contract length could also be a driver.
+**🎯 Mission**: To identify the key factors driving customer churn at Telco and build a machine learning model that accurately predicts customer churn. I aim to present the findings in a comprehensive report that anyone, even those without a data science background, can understand and act upon.
 
-# Project Planning (lay out your process through the data science pipeline)
-	1.	Aquire data from the Codeup SQL database.
-	2.	Prepare data
-		⁃ Create calculated columns from existing data:
-            ⁃ tenure
-            - churn
-	3.	Explore data in search of drivers.
-		⁃	Answer the following initial questions:
-			⁃	Does higher monthly costs contribute to more customer churn?
-			⁃	Does any individual customer attribute contribute more to customer churn?
-	4.	Develop a Model to predict if a customer will churn
-		⁃	Use drivers identified in explore to build predictive models of different types.
-		⁃	Evaluate models on train and validate data.
-		⁃	Select the best model based on highest accuracy.
-		⁃	Evaluate the best model on test data.
-	5.	Draw Conclusions.
+**💡 Hypothesis**: I suspect that churn might be linked to higher monthly costs and the length of the contract. But let's dive in and see what the data tells us!
 
+# 📋 Game Plan:
 
-# Data Dictionary:
+1. **Data Acquisition**: Fetch data from the Codeup SQL database.
+2. **Data Preparation**: Create calculated columns from existing data, such as tenure and churn.
+3. **Data Exploration**: Investigate potential drivers of churn. I will be asking questions like: Does higher monthly cost contribute to more customer churn? Does any individual customer attribute contribute more to customer churn?
+4. **Model Development**: Build and evaluate various predictive models using the identified drivers. The best model will be selected based on its accuracy.
+5. **Conclusion**: Draw insights and make recommendations based on my findings.
 
+# 📚 Data Dictionary: Your Guide to the Dataset
 
 | Feature |	Definition |
 |:--------|:-----------|
@@ -59,11 +44,12 @@ Telco has elevated levels of customers canceling their services or churning. It 
 |tenure| The number of months that a customer has been subscribed for services. |
 
 
-# Steps to Reproduce:
-1. Copy this repo.
+Want to dive into the data yourself? Here's how:
+
+1. Clone this repo.
 2. Get credentials from Codeup to query their telco_churn dataset.
-3. Ensure the acquire.py, prepare.py, env.py and telco_functions.py are in the same folder as the final notebook.
-3. Run the final notebook.
+3. Ensure the acquire.py, prepare.py, env.py, and telco_functions.py are in the same folder as the final notebook.
+4. Run the final notebook.
 
 # Takeaways:
 
